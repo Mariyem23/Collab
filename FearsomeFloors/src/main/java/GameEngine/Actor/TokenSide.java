@@ -1,4 +1,4 @@
-package GameEngine;
+package GameEngine.Actor;
 
 public enum TokenSide
 {

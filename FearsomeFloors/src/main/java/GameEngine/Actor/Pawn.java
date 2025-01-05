@@ -1,7 +1,9 @@
-package GameEngine;
+package GameEngine.Actor;
 
-import GameEngine.Core.MovementDirection;
-import GameEngine.Core.StraightMove;
+import GameEngine.World.Board;
+import GameEngine.Movement.MovementDirection;
+import GameEngine.Movement.StraightMove;
+import GameEngine.World.TileType;
 
 import java.util.List;
 

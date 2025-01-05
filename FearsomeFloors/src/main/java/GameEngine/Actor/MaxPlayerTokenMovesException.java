@@ -1,4 +1,4 @@
-package GameEngine;
+package GameEngine.Actor;
 
 public class MaxPlayerTokenMovesException extends Exception
 {

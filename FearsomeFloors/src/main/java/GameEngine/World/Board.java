@@ -1,4 +1,6 @@
-package GameEngine;
+package GameEngine.World;
+import GameEngine.World.Tile;
+import GameEngine.World.TileType;
 
 public class Board {
     private Tile[][] grid;

@@ -1,6 +1,4 @@
-package GameEngine;
-
-import GameEngine.Core.TokenCapacityNotFoundException;
+package GameEngine.Actor;
 
 public enum TokenMoveCapacity
 {

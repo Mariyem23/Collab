@@ -1,5 +1,9 @@
 package GameEngine;
-import GameEngine.Core.TokenCapacityNotFoundException;
+import GameEngine.Actor.Monster;
+import GameEngine.Actor.Player;
+import GameEngine.Actor.TokenCapacityNotFoundException;
+import GameEngine.IOSystem.IInputOutputStream;
+import GameEngine.World.Board;
 
 import java.util.ArrayList;
 
@@ -9,8 +13,13 @@ public class Game {
     private Board board;
     private ArrayList<Player> players;
     private Monster monster;
+    private IInputOutputStream inputOutputStream;
 
-    public Game(int playersNumber, int boardDx, int boardDy)
+    public Game(
+            int playersNumber,
+            int boardDx,
+            int boardDy,
+            IInputOutputStream inputReader)
             throws MaxPlayersReachedException, TokenCapacityNotFoundException {
         if (playersNumber > MaxPlayersNumber) {
             throw new MaxPlayersReachedException(playersNumber);
@@ -21,6 +30,7 @@ public class Game {
         board = new Board(boardDx, boardDy);
         players = new ArrayList<>();
         monster = new Monster(10,10, 20, board);
+        this.inputOutputStream = inputReader;
 
         for (int i = 0; i < playersNumber; i++) {
             players.add(new Player("Player " + (i + 1), tokensPerPlayer, board));
@@ -31,14 +41,15 @@ public class Game {
         while (!isGameOver()) {
             for (Player currentPlayer : players)
             {
-                currentPlayer.takeTurn();
+                currentPlayer.takeTurn(inputOutputStream);
+
                 if (currentPlayer.hasWon()) {
-                    System.out.println(currentPlayer.getName() + " has won the game!");
+                    inputOutputStream.infoMessage(currentPlayer.getName() + " has won the game!");
                     break;
                 }
             }
 
-            monster.takeTurn();
+            monster.takeTurn(inputOutputStream);
         }
     }
 

@@ -1,6 +1,7 @@
-package GameEngine;
+package GameEngine.World;
+import GameEngine.World.TileType;
 
-class Tile {
+public class Tile {
     private int x, y;
     private TileType type;
 

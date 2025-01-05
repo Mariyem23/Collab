@@ -1,4 +1,4 @@
-package GameEngine.Core;
+package GameEngine.Actor;
 
 public class TokenCapacityNotFoundException extends Exception {
     public TokenCapacityNotFoundException(int tokenIndex)

@@ -1,8 +1,12 @@
-package GameEngine;
+package GameEngine.Actor;
+import GameEngine.IOSystem.IInputOutputStream;
+import GameEngine.World.Board;
+import GameEngine.World.TileType;
+import GameEngine.World.Tile;
 import java.util.Random;
 import java.util.List;
 
-class Monster {
+public class Monster {
     private Board board;
     private int x, y;
     private int visionRange;
@@ -14,8 +18,9 @@ class Monster {
         this.board = board;
     }
 
-    public void takeTurn() {
-        // Simple logic: move randomly (replace with line-of-sight logic)
+    public void takeTurn(IInputOutputStream inputOutputStream) {
+
+        inputOutputStream.infoMessage("C'est le tour du monstre !");
         Random rand = new Random();
 
         int moveX = rand.nextInt(3) - 1; // Move -1, 0, or 1 column
@@ -30,7 +35,8 @@ class Monster {
             x = newX;
         }
 
-        System.out.println("Monster moved to (" + x + ", " + y + ")");
+        inputOutputStream.infoMessage("Le monstre s'est déplacé à (" + x + ", " + y + ")");
+        board.printBoard();
     }
 
     // Check if the monster can see a player (no obstacles between them)

@@ -1,11 +1,12 @@
-package GameEngine;
-import GameEngine.Core.Pair;
-import GameEngine.Core.StraightMove;
+package GameEngine.Actor;
+import GameEngine.Base.Pair;
+import GameEngine.World.Board;
+import GameEngine.Movement.StraightMove;
 
 import java.util.Map;
 import java.util.List;
 
-class PlayerToken extends Pawn {
+public class PlayerToken extends Pawn {
     private int frontSideMoveCapacity, backSideMoveCapacity;
     private TokenSide currentSide = TokenSide.FrontSide;
 
@@ -47,4 +48,18 @@ class PlayerToken extends Pawn {
         currentSide = currentSide == TokenSide.FrontSide ?
                 TokenSide.BackSide : TokenSide.FrontSide;
     }
+
+    // Move the player Token by a certain number of spaces
+    //    public boolean move(int steps) {
+    //        // Try to move the player
+    //        for (int i = 0; i < steps; i++) {
+    //            if (!canMoveTo(x + 1, y)) return false; // Check if the move is valid
+    //            x++;
+    //            if (grid.isStone(x, y)) {
+    //                if (!canPushStone(x + 1, y)) return false; // Check if stone can be pushed
+    //                grid.pushStone(x, y); // Push the stone
+    //            }
+    //        }
+    //        return true;
+    //    }
 }
